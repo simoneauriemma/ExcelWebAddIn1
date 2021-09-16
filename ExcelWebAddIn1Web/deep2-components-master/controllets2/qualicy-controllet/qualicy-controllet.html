@@ -1,0 +1,224 @@
+<link rel="stylesheet" type="text/css" href="../shared/fontawesome/css/all.min.css">
+
+<template id="qualicy-controllet">
+
+    <!--<link rel="stylesheet" type="text/css" href="../shared/bootstrap/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" href="../shared/DataTables/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="../shared/fontawesome/css/all.min.css">
+
+    <link rel="stylesheet" type="text/css" href="./static/css/dataTables.material.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/qualicy.css">
+
+    <div id="qualicy-container">
+
+        <div id="qualicy-table">
+            <table id="ranking-list-datatable" width="100%"></table>
+        </div>
+
+        <div id="qualicy-menu">
+
+            <div class="qualicy-tab">
+                <button class="tablinks" id="qualicy-tab-1-link" href="qualicy-tab-1">Column / Cell</button>
+                <button class="tablinks" id="qualicy-tab-2-link" href="qualicy-tab-2">Schema</button>
+            </div>
+
+            <div id="qualicy-tab-1" class="qualicy-tab-content">
+                <!--TYPE-->
+                <div id="type-menu" class="tab-menu">TYPE</div>
+                <div id="type-container" class="collapsible-container">
+                    <div>
+                        <span id="nullLabel" class="span-l">Empty or <i>null</i> values:</span>
+                        <span class="span-r">
+                            <span id="prevNull" class="fas fa-chevron-circle-left"></span>
+                            <span id="currentNull" class="counter"> </span>
+                            <span id="nextNull" class="fas fa-chevron-circle-right"></span>
+                        </span>
+                    </div>
+
+                    <div>
+                        <span id="mismatchDatatypesLabel" class="span-l">Mismatches:</span>
+                        <span class="span-r">
+                            <span id="prevMismatchDatatypes" class="fas fa-chevron-circle-left"></span>
+                            <span id="currentMismatchDatatypes" class="counter"> </span>
+                            <span id="nextMismatchDatatypes" class="fas fa-chevron-circle-right"></span>
+                        </span>
+                    </div>
+
+                </div>
+
+                <!--METATYPE-->
+                <div id="metatype-menu" class="tab-menu">METATYPE</div>
+                <div id="metatype-container" class="collapsible-container">
+                    <div>
+                        <span id="missingMetadatatypeLabel" class="span-l">Missing:</span>
+                        <span class="span-r">
+                            <span id="prevMissingMetadatatypes" class="fas fa-chevron-circle-left"></span>
+                            <span id="currentMissingMetadatatypes" class="counter"> </span>
+                            <span id="nextMissingMetadatatypes" class="fas fa-chevron-circle-right"></span>
+                        </span>
+                    </div>
+                    <div>
+                        <span id="mismatchMetadatatypesLabel" class="span-l">Mismatches:</span>
+                        <span class="span-r">
+                            <span id="prevMismatchMetadatatypes" class="fas fa-chevron-circle-left"></span>
+                            <span id="currentMismatchMetadatatypes" class="counter"> </span>
+                            <span id="nextMismatchMetadatatypes" class="fas fa-chevron-circle-right"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <!--PRIVACY-->
+                <div id="privacy-menu" class="tab-menu">PRIVACY</div>
+                <div id="privacy-container" class="collapsible-container">
+                    <div>
+                        <!--<span class="span-l"></span>-->
+                        <span class="span-r">
+                            <span id="prevContentPrivacyBreach" class="fas fa-chevron-circle-left"></span>
+                            <span id="currentContentPrivacyBreach" class="counter"> </span>
+                            <span id="nextContentPrivacyBreach" class="fas fa-chevron-circle-right"></span>
+                        </span>
+                    </div>
+                </div>
+
+                <!--TYPO-->
+                <div id="typo-menu" class="tab-menu">TYPO</div>
+                <div id="typo-container" class="collapsible-container">
+                    <div>
+                        <!--<span class="span-l"></span>-->
+                        <span class="span-r">
+                            <span id="prevTypo" class="fas fa-chevron-circle-left"></span>
+                            <span id="currentTypo" class="counter"> </span>
+                            <span id="nextTypo" class="fas fa-chevron-circle-right"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="qualicy-tab-2" class="qualicy-tab-content" style="display: none">
+
+            </div>
+
+        </div>
+
+
+
+
+        <!-- The Modal -->
+        <div class="modal" id="qualicy-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Details </h4>
+                        <button type="button" class="close close-button" id="qualicy-close-button">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div>
+                            <span id="modal-value-label"> Value: </span>
+                            <span id ="modal-value"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-datatype-label">Type: </span>
+                            <span id ="modal-datatype"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-metadatatype-label">Metatype: </span>
+                            <span id ="modal-metadatatype"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-typos-label">Typo corrections:</span>
+                            <span id ="modal-typos"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-contentPrivacyBreach-label">Content privacy breaches:</span>
+                            <span id ="modal-contentPrivacyBreach"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal footer
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger close-button" data-dismiss="modal">Close</button>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="columnStats-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Details </h4>
+                        <button type="button" class="close close-button" id="columnStats-close-button">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <div>
+                            <span id="modal-column-label"> Column: </span>
+                            <span id ="modal-column-title"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-column-datatype-label">Type: </span>
+                            <span id ="modal-column-datatype"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-column-type-homogeneity-label">Type Homogeneity:</span>
+                            <span id ="modal-column-type-homogeneity"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-column-metadatatype-label">Metatype: </span>
+                            <span id ="modal-column-metadatatype"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-column-metadatatype-homogeneity-label">Metatype Homogeneity:</span>
+                            <span id ="modal-column-metadatatype-homogeneity"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-column-completeness-label">Completeness:</span>
+                            <span id ="modal-column-completeness"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-column-null-label">Number of NULL values:</span>
+                            <span id ="modal-column-null"></span>
+                        </div>
+
+                        <div>
+                            <span id="modal-structuralPrivacyBreach-label">Structural privacy breaches:</span>
+                            <span id ="modal-structuralPrivacyBreach"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Modal footer
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-danger close-button" data-dismiss="modal">Close</button>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</template>
+
+<script type="module" src="./qualicy-controllet.js"></script>

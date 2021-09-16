@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="import" href="./splod-visualization-controllet.html">
+    <script type="text/javascript" src="../../bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <style>
+        #controllet paper-material {
+            overflow: hidden;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ComponentService.components_url = "https://deep.routetopa.eu/deep2/DEEP/";
+            window.addEventListener("data-sevc-controllet.dataletCreated", function(e){parent.createHTML(e);});
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="creator_container">
+        <splod-visualization-controllet components-url="https://deep.routetopa.eu/deep2t/COMPONENTS/" deep-url="https://deep.routetopa.eu/deep2t/DEEP/" datalets-list-url="https://deep.routetopa.eu/deep2/DEEP/datalets-list" localization="en">
+    </div>
+</body>
+
+</html>
+
