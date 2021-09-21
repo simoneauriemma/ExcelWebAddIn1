@@ -11,11 +11,11 @@ var arrayValueExcel = []
 
 function doQuery() {
     let query = getCookie("query")
+    //let query = "https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=select+distinct+%3FConcept+where+%7B%5B%5D+a+%3FConcept%7D+LIMIT+100&format=application%2Fsparql-results%2Bjson&timeout=30000&signal_void=on&signal_unconnected=on"
     console.log("\n" + query)
 
     axios.get(query)
         .then(function (response) {
-            //console.log(response.data.results.bindings[0].Lighthouse_1.value)
             //console.log(response.data.results)
             results = response.data.results.bindings
 
@@ -25,10 +25,6 @@ function doQuery() {
                 // Office is ready.
                 //console.log("\n officePronto")
                 $(document).ready(function () {
-
-                    /*var arrayLabelsExcel = [
-                        [arrayLabels[0], arrayLabels[1]]
-                    ];*/
 
                     if (arrayLabels.length == 1) {
                         let temp = arrayLabels[0]
@@ -41,8 +37,6 @@ function doQuery() {
 
                     var labelsRange = createRangeLabels()
                     //console.log(labelsRange)
-
-                    arrayValueExcel
 
                     results.forEach(x => {
                         let rowArray = []
@@ -75,11 +69,6 @@ function doQuery() {
                     Excel.run(function (ctx) {
                         console.log("\n excelRun")
 
-                        /*var values = [
-                            [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)],
-                            [Math.floor(Math.random() * 1000), null , Math.floor(Math.random() * 1000)],
-                            [Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000), Math.floor(Math.random() * 1000)]
-                        ];*/
                         //console.log(values)
                         // Crea un oggetto proxy per la variabile del foglio attivo
                         var sheet = ctx.workbook.worksheets.getActiveWorksheet();

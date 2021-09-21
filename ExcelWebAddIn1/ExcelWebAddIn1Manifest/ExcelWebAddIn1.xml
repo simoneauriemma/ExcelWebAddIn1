@@ -15,7 +15,7 @@
   <!--Versione. Gli aggiornamenti dallo Store vengono attivati solo in caso di modifica della versione. -->
   <Version>1.0.0.0</Version>
   <ProviderName>[Nome provider]</ProviderName>
-  <DefaultLocale>en-US</DefaultLocale>
+  <DefaultLocale>it-IT</DefaultLocale>
   <!-- Nome visualizzato del componente aggiuntivo. Viene usato nello Store e in altri punti dell'interfaccia utente di Office, come la finestra di dialogo dei componenti aggiuntivi. -->
   <DisplayName DefaultValue="AddIn Knowledge Graph" />
   <Description DefaultValue="ExcelWebAddIn1"/>
@@ -27,6 +27,7 @@
   <AppDomains>
     <AppDomain>https://localhost:44344</AppDomain>
 	  <AppDomain>https://dbpedia.org/</AppDomain>
+	  <AppDomain>https://dbpedia.org/sparql</AppDomain>
   </AppDomains>
   <!--Fine Impostazioni di base. -->
   

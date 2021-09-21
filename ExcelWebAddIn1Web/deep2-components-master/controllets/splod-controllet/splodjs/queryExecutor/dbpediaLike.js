@@ -175,7 +175,7 @@ dbpediaLike.prototype.getAllEntities = function(limit, callback) {
 	if(limit)
 		query += "LIMIT " + limit;
 
-	console.log(query)
+	//console.log(query)
 
    	queryUrl = endpoint+"?query="+ encodeURIComponent(query) +"&format=json";
     var xhr = $.ajax({

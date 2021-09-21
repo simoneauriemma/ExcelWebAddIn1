@@ -3722,6 +3722,7 @@
     <Content Include="deep2-components-master\controllets\splod-controllet\splod_core.html" />
     <Content Include="deep2-components-master\controllets\splod-modification-controllet\splod-modification-controllet.html" />
     <Content Include="deep2-components-master\controllets\splod-visualization-controllet\demo.html" />
+    <Content Include="deep2-components-master\controllets\splod-visualization-controllet\fetch-jsonp.min.js" />
     <Content Include="deep2-components-master\controllets\splod-visualization-controllet\iframe-splod-creator.html" />
     <Content Include="deep2-components-master\controllets\splod-visualization-controllet\insertTable.js" />
     <Content Include="deep2-components-master\controllets\splod-visualization-controllet\splod-visualization-controllet.html" />

@@ -89,6 +89,10 @@ function renderResultTable(select, labelSelect, results){
 	createFieldsSelectionList();
 	createTable(select, results);
 
+	var button = document.querySelector("#slider_chevron_right")
+	button.setAttribute("hidden", "hidden")
+	//console.log(button)
+
 	/*console.log("\n testInViewer \n ")
 	var table = document.getElementById("resultsTable");
 	//console.log("button->>"+table)
